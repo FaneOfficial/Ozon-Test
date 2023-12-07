@@ -1,0 +1,144 @@
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+.progress-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.progress-ring {
+    position: relative;
+}
+  
+.progress-ring-circle {
+    fill: none;
+    stroke: blue;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 314;
+    stroke-dashoffset: 0;
+    transition: 0.3s ease;
+    transform-origin: center;
+    transform: rotate(-90deg);
+    stroke-linecap:butt
+}
+
+.progress-ring-circle-back {
+    fill: none;
+    stroke: #f3f3f3;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 314;
+    stroke-dashoffset: 0;
+}
+
+.progress-bar {
+    position: relative;
+    height: 120px;
+    width: 120px;
+}
+
+.percents, label {
+    margin: 10px 0;
+}
+
+#value-input {
+    width: 38px;
+    height: 22px;
+    border-radius: 23px;
+    text-align: center
+}
+.animate {
+    animation: move 1.5s infinite linear;
+}
+
+@keyframes move {
+    0% {
+      transform: rotate(-90deg);
+    }
+    100% {
+      transform: rotate(270deg);
+    }
+}
+
+@media (min-width: 569px) {
+    .progress-block {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .menu {
+        margin-left: 50px;
+    }
+}
+
+@media (max-width: 568px) {
+    .progress-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 50px;
+    }
+    .menu {
+        margin-top: 60px;
+        justify-content: center;
+    }
+}
+
+.switcher {
+    display: inline-block;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    align-items: center;
+}
+
+.switcher i {
+    position: relative;
+    display: inline-block;
+    margin-right: .5rem;
+    width: 46px;
+    height: 26px;
+    background-color: #e6e6e6;
+    border-radius: 23px;
+    vertical-align: text-bottom;
+    transition: all 0.3s linear;
+}
+
+.switcher i::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 42px;
+    height: 22px;
+    background-color: #fff;
+    border-radius: 11px;
+    transform: translate3d(2px, 2px, 0) scale3d(1, 1, 1);
+    transition: all 0.25s linear;
+}
+
+.switcher i::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 22px;
+    height: 22px;
+    background-color: #fff;
+    border-radius: 11px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24);
+    transform: translate3d(2px, 2px, 0);
+    transition: all 0.2s ease-in-out;
+}
+.switcher:active i::after {
+    width: 28px;
+    transform: translate3d(2px, 2px, 0);
+}
+.switcher:active input:checked + i::after { transform: translate3d(16px, 2px, 0); }
+.switcher input { display: none; }
+.switcher input:checked + i { background-color: blue; }
+.switcher input:checked + i::before { transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0); }
+.switcher input:checked + i::after { transform: translate3d(22px, 2px, 0); }
