@@ -36,12 +36,17 @@ const progressComponent = (targetElement) => {
         if (value > 100) {
             valueInput.value = 100;
         }
-        if (value < 0) {
+        if (value >= -100 && value < 0) {
+            valueInput.value = Math.abs(value)
+
+        }
+        if (value < -100) {
             valueInput.value = 0;
         }
-        const progress = (314 * (100 - value)) / 100;
+        const progress = (314 * (100 - Math.abs(valueInput.value))) / 100;
         circle.style.strokeDashoffset = progress;
     }
+
     const animateCheckboxChange = () => {
         if (animateCheckbox.checked) {
             circle.classList.add('animate');
